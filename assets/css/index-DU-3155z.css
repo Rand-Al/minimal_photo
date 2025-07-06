@@ -154,11 +154,12 @@ p:last-child {
     transform: scale(1.1);
 }
 .header {
-    width: 1000px;
+    max-width: 1000px;
+    width: 100%;
     margin: 0 auto;
     background-color: #fff;
     padding: 20px 40px 20px 35px;
-    position: relative;
+    position: fixed;
     z-index: 10;
     transition: all 0.3s ease 0s;
 }
@@ -331,7 +332,7 @@ p:last-child {
     border-bottom: 1px solid #333;
 }
 .hero {
-    background: url(/assets/hero-BrMIHYlh.jpg) center/cover no-repeat;
+    background: var(--hero-bg) center/cover no-repeat;
     color: #fff;
     text-align: center;
     padding: 180px 20px;
@@ -364,6 +365,11 @@ p:last-child {
 }
 .portfolio__title {
     padding-top: 20px;
+}
+.portfolio__button {
+    margin-top: 20px;
+    text-align: right;
+    margin-right: 20px;
 }
 .body-portfolio {
     display: grid;

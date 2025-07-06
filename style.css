@@ -4,8 +4,3 @@ Description: Custom theme for photographer portfolio
 Version: 1.0.0
 Author: mr.VitPoll
 */
-.container--main {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-}

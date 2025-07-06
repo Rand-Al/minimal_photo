@@ -5,7 +5,18 @@
     <meta charset="<?php bloginfo('charset'); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <?php wp_head(); ?>
+    <?php if (is_front_page()) : ?>
+        <style>
+            :root {
+                --hero-bg: url('<?php
+                                $hero_bg = CFS()->get('hero_background');
+                                echo $hero_bg ? esc_url($hero_bg) : get_template_directory_uri() . '/assets/images/hero.jpg';
+                                ?>');
+            }
+        </style>
+    <?php endif; ?>
 </head>
+
 
 <body <?php body_class('body'); ?>>
     <?php wp_body_open(); ?>
