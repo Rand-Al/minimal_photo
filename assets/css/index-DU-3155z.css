@@ -163,6 +163,9 @@ p:last-child {
     z-index: 10;
     transition: all 0.3s ease 0s;
 }
+.header.header-shadow {
+    box-shadow: 0 4px 5px #00000025;
+}
 .header__inner {
     display: flex;
     align-items: center;
@@ -406,9 +409,11 @@ p:last-child {
     justify-content: center;
     margin-bottom: 20px;
     gap: 20px;
+    flex-wrap: wrap;
 }
 .portfolio-categories__item {
     font-size: 20px;
+    background: transparent !important;
 }
 .active-category {
     border-bottom: 1px solid #000;

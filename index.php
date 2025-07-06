@@ -51,7 +51,7 @@ get_header(); ?>
                 ?>
             </div>
             <div class="portfolio__button ">
-                <button class="button button--transparent">Показать еще</button>
+                <a href="<?php the_permalink(53); ?>" class="button button--transparent">Смотреть еще</a>
             </div>
         </section>
         <section class="main-bottom">

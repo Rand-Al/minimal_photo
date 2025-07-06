@@ -21,7 +21,7 @@
 <body <?php body_class('body'); ?>>
     <?php wp_body_open(); ?>
     <div class="container container--main">
-        <header class="header">
+        <header class="header <?= !is_front_page() ? 'header-shadow' : '' ?>">
             <div class="header__inner">
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="logo img-ibg img-ibg--logo">
                     <?php

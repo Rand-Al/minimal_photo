@@ -1,0 +1,256 @@
+/**
+ * Стили для модального окна портфолио
+ * 
+ * Эти стили создают современное, отзывчивое модальное окно
+ * с плавными анимациями и отличным пользовательским опытом
+ */
+
+/* Основной контейнер модального окна */
+.portfolio-modal {
+    /* Позиционируем поверх всего контента */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999; /* Высокий z-index гарантирует, что модальное окно появится поверх всего */
+
+    /* Начальное состояние для плавной анимации */
+    opacity: 0;
+    visibility: hidden;
+
+    /* Плавная анимация появления/исчезновения */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+
+    /* Flexbox для центрирования контента */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Когда модальное окно активно - делаем его видимым */
+.portfolio-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Полупрозрачный фон за модальным окном */
+.portfolio-modal__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85); /* Темный полупрозрачный фон */
+    cursor: pointer; /* Показываем, что на фон можно кликнуть для закрытия */
+}
+
+/* Основной контейнер контента модального окна */
+.portfolio-modal__content {
+    position: relative;
+    background: #ffffff;
+    border-radius: 12px; /* Современные скругленные углы */
+    max-width: 90vw; /* Адаптивная ширина относительно размера экрана */
+    max-height: 90vh; /* Адаптивная высота относительно размера экрана */
+    overflow: hidden;
+
+    /* Тень для создания эффекта глубины */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+        0 10px 20px -5px rgba(0, 0, 0, 0.1);
+
+    /* Анимация масштабирования при появлении */
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+
+    /* Flexbox для организации внутреннего содержимого */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Когда модальное окно активно - возвращаем нормальный масштаб */
+.portfolio-modal.active .portfolio-modal__content {
+    transform: scale(1);
+}
+
+/* Кнопка закрытия модального окна */
+.portfolio-modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%; /* Круглая кнопка */
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1; /* Поверх изображения */
+
+    /* Flexbox для центрирования символа × */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Плавная анимация при наведении */
+    transition: all 0.2s ease;
+}
+
+/* Эффект при наведении на кнопку закрытия */
+.portfolio-modal__close:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.1); /* Небольшое увеличение при наведении */
+}
+
+/* Контейнер для изображения */
+.portfolio-modal__image {
+    width: 100%;
+    height: auto;
+    max-height: 70vh; /* Ограничиваем высоту для адаптивности */
+    object-fit: contain; /* Сохраняем пропорции изображения */
+    display: block;
+}
+
+/* Контейнер для текстовой информации */
+.portfolio-modal__info {
+    padding: 25px 30px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb; /* Тонкая разделительная линия */
+}
+
+/* Заголовок в модальном окне */
+.portfolio-modal__title {
+    margin: 0 0 15px 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1f2937; /* Темно-серый цвет для хорошей читаемости */
+    line-height: 1.3;
+}
+
+/* Описание в модальном окне */
+.portfolio-modal__description {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #6b7280; /* Более светлый серый для вторичного текста */
+}
+
+/* Адаптивные стили для планшетов */
+@media (max-width: 768px) {
+    .portfolio-modal__content {
+        max-width: 95vw;
+        max-height: 95vh;
+        margin: 10px;
+    }
+
+    .portfolio-modal__image {
+        max-height: 60vh; /* Меньше места для изображения на мобильных */
+    }
+
+    .portfolio-modal__info {
+        padding: 20px;
+    }
+
+    .portfolio-modal__title {
+        font-size: 20px;
+    }
+
+    .portfolio-modal__description {
+        font-size: 14px;
+    }
+
+    .portfolio-modal__close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+    }
+}
+
+/* Дополнительные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+    .portfolio-modal {
+        padding: 10px;
+    }
+
+    .portfolio-modal__content {
+        border-radius: 8px; /* Меньше скругления на мобильных */
+    }
+
+    .portfolio-modal__image {
+        max-height: 50vh;
+    }
+
+    .portfolio-modal__info {
+        padding: 15px;
+    }
+
+    .portfolio-modal__title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+}
+
+/* Блокировка прокрутки основной страницы когда модальное окно открыто */
+body.modal-open {
+    overflow: hidden;
+    /* Предотвращаем скачки макета при скрытии скроллбара */
+    padding-right: var(--scrollbar-width, 0px);
+}
+
+/* Стили для индикатора загрузки */
+.portfolio-loading {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 16px;
+    color: #6b7280;
+}
+
+/* Добавляем простую анимацию загрузки */
+.portfolio-loading::after {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #e5e7eb;
+    border-top: 2px solid #3b82f6;
+    border-radius: 50%;
+    margin-left: 10px;
+    animation: spin 1s linear infinite;
+}
+
+/* Анимация вращения для индикатора загрузки */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Улучшенные стили для кнопки "Load More" */
+#load-more-portfolio {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+#load-more-portfolio:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 20px rgba(102, 126, 234, 0.4);
+}
+
+#load-more-portfolio:active {
+    transform: translateY(0);
+}
