@@ -25,7 +25,7 @@ get_header(); ?>
         <section class="portfolio" id="portfolio">
             <h2 class="portfolio__title title">
                 <?php
-                $portfolio_title = CFS()->get('portfolio_title');
+                $portfolio_title = CFS()->get('portfolio_main_title');
                 echo esc_html($portfolio_title ?: 'Portfolio');
                 ?>
             </h2>
@@ -56,8 +56,15 @@ get_header(); ?>
         </section>
         <section class="main-bottom">
             <section class="about" id="about">
-                <h2 class="about__title title">About</h2>
+                <h2 class="about__title title">
+                    <?php
+                    $about_main_title = CFS()->get('about_main_title') ?: 'About';
+                    echo esc_html($about_main_title)
+                    ?>
+                </h2>
                 <p class="about__text text">
+                    <?php
+                    $about_main_description = CFS()->get('about_main_description') ?: '
                     Hi! I’m a freelance photographer with a deep love
                     for capturing real emotions, unique moments, and the
                     beauty hidden in everyday life. Through my lens, I
@@ -71,19 +78,40 @@ get_header(); ?>
                     local and destination shoots. Let’s create something
                     meaningful together — images that will last a
                     lifetime
+                    ';
+                    echo esc_html($about_main_description)
+                    ?>
                 </p>
             </section>
 
             <section class="contact" id="contact">
-                <h2 class="title">Contact</h2>
+                <h2 class="title">
+                    <?php
+                    $contact_title = CFS()->get('contact_main_title');
+                    echo esc_html($contact_title ?: 'Contact');
+                    ?>
+                </h2>
                 <p class="text">
-                    Ready to capture your moments? Get in touch with me.
+                    <?php
+                    $contact_subtitle = CFS()->get('contact_main_subtitle');
+                    echo esc_html($contact_subtitle ?: 'Ready to capture your moments? Get in touch with me.');
+                    ?>
                 </p>
-                <button class="button">Send Message</button>
+                <?php
+                $contact_btn_text = CFS()->get('contact_main_btn_text') ?: 'send message';
+                $contacts_page = get_page_by_path('kontakty');
+                if ($contacts_page) {
+                    $url = get_permalink($contacts_page->ID);
+                } else {
+                    $url = home_url('/?page_id=78'); // fallback
+                }
+                ?>
+                <a href="<?php echo esc_url(get_permalink(get_page_by_path('contacts'))); ?>" class="button">
+                    <?php echo ucwords(esc_html($contact_btn_text)) ?>
+                </a>
             </section>
         </section>
     <?php endif; ?>
-
 </main>
 <?php
 get_footer();

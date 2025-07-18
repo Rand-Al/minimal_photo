@@ -53,10 +53,14 @@ get_header(); ?>
             <!-- Кнопка "Загрузить еще" -->
             <div class="portfolio-page__button">
                 <button class="button button--transparent" id="load-more-portfolio" style="display: none;">
-                    Load More
+                    <?php
+                    $btn_text = CFS()->get('portfolio_page_btn_load_more') ?: 'Load More';
+                    echo esc_html($title);
+                    ?>
                 </button>
             </div>
         </section>
+    </div>
 </main>
 
 <!-- Модальное окно для просмотра изображений -->

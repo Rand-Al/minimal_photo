@@ -3,9 +3,11 @@
 // Подключение файлов PHP
 require_once get_template_directory() . '/inc/class-nav-walker.php';
 require_once get_template_directory() . '/inc/class-footer-nav-walker.php';
+require_once get_template_directory() . '/inc/phone-formatter.php';
 require_once get_template_directory() . '/inc/portfolio_page/post-types.php';
 require_once get_template_directory() . '/inc/portfolio_page/taxonomies.php';
 require_once get_template_directory() . '/inc/portfolio_page/ajax-handlers.php';
+
 
 // Подключение стилей и скриптов
 function theme_enqueue_scripts() {
